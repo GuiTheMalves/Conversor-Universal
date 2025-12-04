@@ -1,1 +1,8 @@
-//Para as classes de conversões
+//Para chamar a interface gráfica
+package conversor_universal; 
+public class principal {
+    public static void main(String[] args) {
+        InterfaceGrafica gui = new InterfaceGrafica();
+        gui.criarInterface();
+    }
+}
