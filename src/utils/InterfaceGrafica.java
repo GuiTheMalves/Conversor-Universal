@@ -128,9 +128,10 @@ public class InterfaceGrafica {
         JOptionPane.YES_NO_OPTION);
 
     if (resposta == JOptionPane.YES_OPTION) {
-        JOptionPane.showMessageDialog(null, "Obrigado por usar o Conversor Universal!\nTô zuando porra, vai se foder.");
+        JOptionPane.showMessageDialog(null, "Obrigado por usar o Conversor Universal!");
         System.exit(0);
     }
     }
 
 }
+
