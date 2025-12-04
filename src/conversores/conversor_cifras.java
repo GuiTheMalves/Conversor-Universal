@@ -61,14 +61,22 @@ public class conversor_cifras {
         textoParaMorse.put('8', "---..");
         textoParaMorse.put('9', "----.");
         textoParaMorse.put(' ', "/");
+        textoParaMorse.put('.', ".-.-.-");
+        textoParaMorse.put(',', "--..--");
+        textoParaMorse.put('?', "..--..");
+        textoParaMorse.put('!', "-.-.--");
+        textoParaMorse.put(':', "---...");
         for (Map.Entry<Character, String> entry : textoParaMorse.entrySet()) {
         morseParaTexto.put(entry.getValue(), entry.getKey());
     }
 
         switch(escolha) {
             case 0 -> {
+                String entrada = Normalizer.normalize(cifra_morse, Normalizer.Form.NFD)
+                                       .replaceAll("\\p{M}", "") // remove marcas diacríticas
+                                       .toUpperCase();
                 StringBuilder morse = new StringBuilder();
-                for(char c : cifra_morse.toCharArray()) {
+                for(char c : entrada.toCharArray()) {
                     if (textoParaMorse.containsKey(c)) {
                         morse.append(textoParaMorse.get(c)).append(" ");
                     } else if (c == ' ') {
@@ -385,3 +393,4 @@ public class conversor_cifras {
         }
     }
 }
+
