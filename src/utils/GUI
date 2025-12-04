@@ -1,8 +1,137 @@
 //Para o GUI do projeto
-package conversor_universal; 
-public class principal {
-    public static void main(String[] args) {
-        InterfaceGrafica gui = new InterfaceGrafica();
-        gui.criarInterface();
+package conversor_universal;
+import java.awt.*;
+import javax.swing.*;
+
+public class GUI {
+    public void criarInterface(){
+        JFrame frame = new JFrame("CONVERSOR UNIVERSAL!");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLayout(new FlowLayout());
+        JButton botaoNumerico = new JButton("1. CONVERSOR NUMÉRICO");
+        botaoNumerico.addActionListener(e -> abrirSubMenuNumerico());
+        JButton botaoCifrado = new JButton("2. CONVERSOR CIFRADO");
+        botaoCifrado.addActionListener(e -> abrirSubMenuCifrado());
+        JButton botaoSair = new JButton("3. VOLTAR");
+        botaoSair.addActionListener(e -> abrirSair());
+        frame.add(botaoNumerico);
+        frame.add(botaoCifrado);
+        frame.add(botaoSair);
+        frame.setVisible(true);
+        
     }
+    public void abrirSubMenuNumerico(){
+        conversor_numerico cn = new conversor_numerico();
+        JFrame subFrame = new JFrame("Conversões Numéricas");
+        subFrame.setSize(500, 400);
+        subFrame.setLayout(new GridLayout(6, 2));
+
+        JButton botao1 = new JButton("Distância");
+        botao1.addActionListener(e -> cn.fazer_distancia());
+
+        JButton botao2 = new JButton("Temperatura");
+        botao2.addActionListener(e -> cn.fazer_temperatura());
+
+        JButton botao3 = new JButton("Massa");
+        botao3.addActionListener(e -> cn.fazer_massa());
+
+        JButton botao4 = new JButton("Volume");
+        botao4.addActionListener(e -> cn.fazer_volume());
+
+        JButton botao5 = new JButton("Moeda");
+        botao5.addActionListener(e -> cn.fazer_moeda());
+
+        JButton botao6 = new JButton("Velocidade");
+        botao6.addActionListener(e -> cn.fazer_velocidade());
+
+        JButton botao7 = new JButton("Pressão");
+        botao7.addActionListener(e -> cn.fazer_pressao());
+
+        JButton botao8 = new JButton("Frequência");
+        botao8.addActionListener(e -> cn.fazer_frequencia());
+
+        JButton botao9 = new JButton("Tempo");
+        botao9.addActionListener(e -> cn.fazer_tempo());
+
+        JButton botao10 = new JButton("Binário");
+        botao10.addActionListener(e -> cn.fazer_binario());
+
+        JButton botao11 = new JButton("Octal");
+        botao11.addActionListener(e -> cn.fazer_octal());
+
+        JButton botao12 = new JButton("Hexadecimal");
+        botao12.addActionListener(e -> cn.fazer_hexadecimal());
+
+        JButton botaoVoltar = new JButton("Voltar");
+        botaoVoltar.addActionListener(e -> {
+            subFrame.dispose();
+            criarInterface();
+        });
+
+        subFrame.add(botao1);
+        subFrame.add(botao2);
+        subFrame.add(botao3);
+        subFrame.add(botao4);
+        subFrame.add(botao5);
+        subFrame.add(botao6);
+        subFrame.add(botao7);
+        subFrame.add(botao8);
+        subFrame.add(botao9);
+        subFrame.add(botao10);
+        subFrame.add(botao11);
+        subFrame.add(botao12);
+        subFrame.add(botaoVoltar);
+
+        subFrame.setVisible(true);
+
+    }
+    public void abrirSubMenuCifrado(){
+        conversor_cifras cc = new conversor_cifras();
+        JFrame subFrame = new JFrame("Conversões Cifras");
+        subFrame.setSize(500, 400);
+        subFrame.setLayout(new GridLayout(5, 2));
+
+        JButton botao1 = new JButton("Morse");
+        botao1.addActionListener(e -> cc.morse());  
+
+        JButton botao2 = new JButton("César");
+        botao2.addActionListener(e -> cc.cesar());
+
+        JButton botao3 = new JButton("Atbash");
+        botao3.addActionListener(e -> cc.atbash());
+
+        JButton botao4 = new JButton("ASCII");
+        botao4.addActionListener(e -> cc.ascii());
+
+        JButton botao5 = new JButton("NATO");
+        botao5.addActionListener(e -> cc.nato());
+
+        JButton botaoVoltar = new JButton("Voltar");
+        botaoVoltar.addActionListener(e -> {
+            subFrame.dispose();
+            criarInterface(); 
+        });
+
+        subFrame.add(botao1);
+        subFrame.add(botao2);
+        subFrame.add(botao3);
+        subFrame.add(botao4);
+        subFrame.add(botao5);
+        subFrame.add(botaoVoltar);
+
+        subFrame.setVisible(true);
+    }
+    public void abrirSair(){
+        int resposta = JOptionPane.showConfirmDialog(null, 
+        "Tem certeza que deseja sair do programa?", 
+        "Confirmação de saída", 
+        JOptionPane.YES_NO_OPTION);
+
+    if (resposta == JOptionPane.YES_OPTION) {
+        JOptionPane.showMessageDialog(null, "Obrigado por usar o Conversor Universal!\nTô zuando porra, vai se foder.");
+        System.exit(0);
+    }
+    }
+
 }
